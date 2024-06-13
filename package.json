@@ -1,6 +1,6 @@
 {
     "name": "@touk/federated-component",
-    "version": "1.0.0",
+    "version": "1.0.1-beta.1",
     "author": "Julian Wielga",
     "devDependencies": {
         "@babel/core": "7.24.7",
