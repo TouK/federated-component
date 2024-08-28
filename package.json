@@ -19,7 +19,7 @@
         "@semantic-release/release-notes-generator": "14.0.0",
         "@svgr/rollup": "8.1.0",
         "@types/lodash": "4.17.5",
-        "@types/node": "20.14.2",
+        "@types/node": "22.5.1",
         "@types/react": "18.3.3",
         "@types/webpack-env": "1.18.5",
         "@typescript-eslint/eslint-plugin": "7.13.0",
