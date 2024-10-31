@@ -1,4 +1,4 @@
-import React, { Fragment, ReactNode, RefAttributes } from "react";
+import React, { Fragment, RefAttributes } from "react";
 import ReactDOM from "react-dom";
 import { FederatedModuleProvider, FederatedModuleProviderProps } from "./FederatedModuleProvider";
 import { useFederatedModule } from "./hooks";
@@ -14,7 +14,7 @@ function ComponentRender<P extends NonNullable<{ scope: ModuleString }>, T>({ sc
 
 const Component = React.forwardRef(ComponentRender) as <P extends NonNullable<unknown>, T>(
     props: { scope: ModuleString } & P & RefAttributes<T>,
-) => ReactNode;
+) => React.ReactElement;
 
 export type FederatedComponentProps<P extends NonNullable<unknown>> = P & {
     url: ModuleUrl;
@@ -48,7 +48,7 @@ function FederatedComponentRender<P extends NonNullable<unknown>, T>(
 
 export const FederatedComponent = React.forwardRef(FederatedComponentRender) as <P extends NonNullable<unknown>, T = unknown>(
     props: P & RefAttributes<T>,
-) => ReactNode;
+) => React.ReactElement;
 
 interface LoaderOptions {
     Wrapper?: React.FunctionComponent<React.PropsWithChildren<unknown>>;
