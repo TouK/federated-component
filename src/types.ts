@@ -1,4 +1,4 @@
-import { ComponentType } from "react";
+import { ComponentType, ForwardRefExoticComponent, PropsWithoutRef, RefAttributes } from "react";
 import type { Tagged } from "type-fest";
 
 export interface Container {
@@ -38,4 +38,5 @@ export type ModuleString = Tagged<string, "ModuleString">;
 export type ModuleUrl = Tagged<string, "ModuleUrl">;
 
 type Hooks = Record<`use${Capitalize<string>}`, (...args: unknown[]) => unknown>;
-export type Module = { default?: ComponentType<unknown> } & Hooks;
+type Component = ForwardRefExoticComponent<PropsWithoutRef<unknown> & RefAttributes<unknown>>;
+export type Module = { default?: Component } & Hooks;
