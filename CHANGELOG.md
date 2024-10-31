@@ -1,3 +1,10 @@
+# [1.1.0-beta.2](https://github.com/touk/federated-component/compare/v1.1.0-beta.1...v1.1.0-beta.2) (2024-10-31)
+
+
+### Bug Fixes
+
+* forwardRef allowed ([f251984](https://github.com/touk/federated-component/commit/f251984a9f03f01d794fbf2a70079fc7176082c4))
+
 # [1.1.0-beta.1](https://github.com/touk/federated-component/compare/v1.0.1-beta.1...v1.1.0-beta.1) (2024-10-31)
 
 
