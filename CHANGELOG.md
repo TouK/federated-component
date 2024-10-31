@@ -1,3 +1,11 @@
+# [1.1.0-beta.1](https://github.com/touk/federated-component/compare/v1.0.1-beta.1...v1.1.0-beta.1) (2024-10-31)
+
+
+### Features
+
+* pass query params to component ([103b532](https://github.com/touk/federated-component/commit/103b532c1e610c4a38ad2740d9e6d99029c16b8a))
+* read scope from module url, deprecate prop ([21be22b](https://github.com/touk/federated-component/commit/21be22bfb6fa2daafa689da6ab22b91370583723))
+
 ## [1.0.1-beta.1](https://github.com/touk/federated-component/compare/v1.0.0...v1.0.1-beta.1) (2024-06-13)
 
 
