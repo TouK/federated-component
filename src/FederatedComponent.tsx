@@ -1,21 +1,20 @@
-import React, { Fragment } from "react";
+import React, { Fragment, ReactNode, RefAttributes } from "react";
 import ReactDOM from "react-dom";
 import { FederatedModuleProvider, FederatedModuleProviderProps } from "./FederatedModuleProvider";
 import { useFederatedModule } from "./hooks";
 import { splitUrl } from "./tools";
 import { ModuleString, ModuleUrl, ScriptUrl } from "./types";
 
-function Component<P>({
-    scope,
-    ...props
-}: {
-    scope: ModuleString;
-} & P) {
+function ComponentRender<P extends NonNullable<{ scope: ModuleString }>, T>({ scope, ...props }: P, ref: React.ForwardedRef<T>) {
     const {
-        module: { default: Component },
+        module: { default: DefaultComponent },
     } = useFederatedModule(scope);
-    return <Component {...props} />;
+    return <DefaultComponent ref={ref} {...props} />;
 }
+
+const Component = React.forwardRef(ComponentRender) as <P extends NonNullable<unknown>, T>(
+    props: { scope: ModuleString } & P & RefAttributes<T>,
+) => ReactNode;
 
 export type FederatedComponentProps<P extends NonNullable<unknown>> = P & {
     url: ModuleUrl;
@@ -25,24 +24,31 @@ export type FederatedComponentProps<P extends NonNullable<unknown>> = P & {
     scope?: ModuleString;
 };
 
-export function FederatedComponent<P extends NonNullable<unknown>>({
-    url,
-    buildHash,
-    fallback,
-    scope,
-    ...props
-}: FederatedComponentProps<P> & Pick<FederatedModuleProviderProps, "fallback" | "buildHash">) {
+function FederatedComponentRender<P extends NonNullable<unknown>, T>(
+    {
+        buildHash,
+        fallback,
+        url,
+        scope,
+        ...props
+    }: FederatedComponentProps<P> & Pick<FederatedModuleProviderProps, "fallback" | "buildHash">,
+    ref: React.ForwardedRef<T>,
+) {
     const [, scopeValue, , , , query] = splitUrl(url as ModuleUrl);
 
     const searchParams = new URLSearchParams(query);
-    const params = Object.fromEntries(searchParams.entries());
+    const params = Object.fromEntries(searchParams.entries()) as P;
 
     return (
         <FederatedModuleProvider url={url} fallback={fallback} buildHash={buildHash}>
-            <Component scope={scope || scopeValue} {...params} {...props} />
+            <Component ref={ref} {...params} {...props} scope={scope || scopeValue} />
         </FederatedModuleProvider>
     );
 }
+
+export const FederatedComponent = React.forwardRef(FederatedComponentRender) as <P extends NonNullable<unknown>, T = unknown>(
+    props: P & RefAttributes<T>,
+) => ReactNode;
 
 interface LoaderOptions {
     Wrapper?: React.FunctionComponent<React.PropsWithChildren<unknown>>;
