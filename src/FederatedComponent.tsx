@@ -1,9 +1,9 @@
+import { ModuleString, ModuleUrl, ScriptUrl } from "./types";
+import { useFederatedModule } from "./hooks";
 import React, { Fragment } from "react";
+import { splitUrl } from "./tools";
 import ReactDOM from "react-dom";
 import { FederatedModuleProvider, FederatedModuleProviderProps } from "./FederatedModuleProvider";
-import { useFederatedModule } from "./hooks";
-import { splitUrl } from "./tools";
-import { ModuleString, ModuleUrl, ScriptUrl } from "./types";
 
 function Component<P>({
     scope,
@@ -19,24 +19,18 @@ function Component<P>({
 
 export type FederatedComponentProps<P extends NonNullable<unknown>> = P & {
     url: ModuleUrl;
-    /**
-     * @deprecated better use scope from ModuleUrl
-     */
-    scope?: ModuleString;
+    scope: ModuleString;
 };
 
 export function FederatedComponent<P extends NonNullable<unknown>>({
     url,
     buildHash,
     fallback,
-    scope,
     ...props
 }: FederatedComponentProps<P> & Pick<FederatedModuleProviderProps, "fallback" | "buildHash">) {
-    const [, scopeValue] = splitUrl(url as ModuleUrl);
-
     return (
         <FederatedModuleProvider url={url} fallback={fallback} buildHash={buildHash}>
-            <Component scope={scope || scopeValue} {...props} />
+            <Component {...props} />
         </FederatedModuleProvider>
     );
 }
@@ -50,7 +44,7 @@ export function getFederatedComponentLoader({ Wrapper = Fragment, ...options }: 
     return <P extends NonNullable<unknown>>(url: string, props: P) => {
         const rootContainer = document.createElement(`div`);
         document.body.appendChild(rootContainer);
-        const [urlValue, , scriptValue] = splitUrl(url as ModuleUrl);
+        const [urlValue, scopeValue, scriptValue] = splitUrl(url as ModuleUrl);
         ReactDOM.render(
             <Wrapper>
                 <FederatedComponent<
@@ -60,6 +54,7 @@ export function getFederatedComponentLoader({ Wrapper = Fragment, ...options }: 
                     }
                 >
                     url={urlValue}
+                    scope={scopeValue}
                     scriptOrigin={scriptValue}
                     getAuthToken={options.getAuthToken}
                     fallback={null}
