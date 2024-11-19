@@ -1,10 +1,3 @@
-# [1.1.0-beta.3](https://github.com/touk/federated-component/compare/v1.1.0-beta.2...v1.1.0-beta.3) (2024-10-31)
-
-
-### Bug Fixes
-
-* broken types ([2850236](https://github.com/touk/federated-component/commit/2850236fc04d7a40d4f0d693da1cee50e92f04a2))
-
 # [1.1.0-beta.2](https://github.com/touk/federated-component/compare/v1.1.0-beta.1...v1.1.0-beta.2) (2024-10-31)
 
 
