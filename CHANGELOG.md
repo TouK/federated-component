@@ -1,3 +1,20 @@
+# [1.1.0](https://github.com/touk/federated-component/compare/v1.0.0...v1.1.0) (2024-11-19)
+
+
+### Bug Fixes
+
+* broken types ([3540c8f](https://github.com/touk/federated-component/commit/3540c8f555cf243e19bc96b3590fab3533d28131))
+* forwardRef allowed ([b9450c0](https://github.com/touk/federated-component/commit/b9450c0f89712772b2648710b11a13f1a6fa108d))
+* memoize params ([47f0da6](https://github.com/touk/federated-component/commit/47f0da61b580d480bb49da350eb068972cb5e473))
+* removed patch-package from `postinstall` ([a58f96a](https://github.com/touk/federated-component/commit/a58f96aa53ab37214d5a6b9f57d8f6bd7cf4cc91))
+
+
+### Features
+
+* pass origin to component ([cb51485](https://github.com/touk/federated-component/commit/cb51485c21a9fdf1df854ee84c4df763842fd3ca))
+* pass query params to component ([b0e8b7e](https://github.com/touk/federated-component/commit/b0e8b7e13ad56b5a4e867b862854352539d9432c))
+* read scope from module url, deprecate prop ([91b2598](https://github.com/touk/federated-component/commit/91b2598a494ca8ff81c412692cf94519dcbde20f))
+
 # [1.1.0-beta.5](https://github.com/touk/federated-component/compare/v1.1.0-beta.4...v1.1.0-beta.5) (2024-11-19)
 
 
