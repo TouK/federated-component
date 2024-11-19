@@ -1,4 +1,4 @@
-import React, { Fragment, RefAttributes, useMemo } from "react";
+import React, { Fragment, RefAttributes } from "react";
 import ReactDOM from "react-dom";
 import { FederatedModuleProvider, FederatedModuleProviderProps } from "./FederatedModuleProvider";
 import { useFederatedModule } from "./hooks";
@@ -36,10 +36,8 @@ function FederatedComponentRender<P extends NonNullable<unknown>, T>(
 ) {
     const [, scopeValue, , , , query] = splitUrl(url as ModuleUrl);
 
-    const params = useMemo(() => {
-        const searchParams = new URLSearchParams(query);
-        return Object.fromEntries(searchParams.entries()) as P;
-    }, [query]);
+    const searchParams = new URLSearchParams(query);
+    const params = Object.fromEntries(searchParams.entries()) as P;
 
     return (
         <FederatedModuleProvider url={url} fallback={fallback} buildHash={buildHash}>
