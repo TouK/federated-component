@@ -1,10 +1,3 @@
-# [1.1.0-beta.5](https://github.com/touk/federated-component/compare/v1.1.0-beta.4...v1.1.0-beta.5) (2024-11-19)
-
-
-### Features
-
-* pass origin to component ([88af7d1](https://github.com/touk/federated-component/commit/88af7d14e310cdb7a2711eef7f1fccc628eb6d23))
-
 # [1.1.0-beta.4](https://github.com/touk/federated-component/compare/v1.1.0-beta.3...v1.1.0-beta.4) (2024-11-14)
 
 
