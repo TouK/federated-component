@@ -32,14 +32,11 @@ export function FederatedComponent<P extends NonNullable<unknown>>({
     scope,
     ...props
 }: FederatedComponentProps<P> & Pick<FederatedModuleProviderProps, "fallback" | "buildHash">) {
-    const [, scopeValue, , , , query] = splitUrl(url as ModuleUrl);
-
-    const searchParams = new URLSearchParams(query);
-    const params = Object.fromEntries(searchParams.entries());
+    const [, scopeValue] = splitUrl(url as ModuleUrl);
 
     return (
         <FederatedModuleProvider url={url} fallback={fallback} buildHash={buildHash}>
-            <Component scope={scope || scopeValue} {...params} {...props} />
+            <Component scope={scope || scopeValue} {...props} />
         </FederatedModuleProvider>
     );
 }
