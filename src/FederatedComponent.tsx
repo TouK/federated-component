@@ -34,16 +34,16 @@ function FederatedComponentRender<P extends NonNullable<unknown>, T>(
     }: FederatedComponentProps<P> & Pick<FederatedModuleProviderProps, "fallback" | "buildHash">,
     ref: React.ForwardedRef<T>,
 ) {
-    const [, scopeValue, , , , , u] = useMemo(() => splitUrl(url as ModuleUrl), [url]);
+    const [, scopeValue, , , , query] = splitUrl(url as ModuleUrl);
 
     const params = useMemo(() => {
-        const searchParams = u.searchParams;
+        const searchParams = new URLSearchParams(query);
         return Object.fromEntries(searchParams.entries()) as P;
-    }, [u]);
+    }, [query]);
 
     return (
         <FederatedModuleProvider url={url} fallback={fallback} buildHash={buildHash}>
-            <Component ref={ref} {...params} {...props} scope={scope || scopeValue} moduleOrigin={u.origin} />
+            <Component ref={ref} {...params} {...props} scope={scope || scopeValue} />
         </FederatedModuleProvider>
     );
 }
