@@ -1,10 +1,3 @@
-# [1.1.0-beta.4](https://github.com/touk/federated-component/compare/v1.1.0-beta.3...v1.1.0-beta.4) (2024-11-14)
-
-
-### Bug Fixes
-
-* memoize params ([3978df4](https://github.com/touk/federated-component/commit/3978df467b495e217f379871d4de52d0b0410370))
-
 # [1.1.0-beta.3](https://github.com/touk/federated-component/compare/v1.1.0-beta.2...v1.1.0-beta.3) (2024-10-31)
 
 
