@@ -9,7 +9,7 @@
         "@babel/preset-typescript": "7.26.0",
         "@loadable/component": "5.16.4",
         "@rollup/plugin-commonjs": "28.0.1",
-        "@rollup/plugin-node-resolve": "15.3.0",
+        "@rollup/plugin-node-resolve": "16.0.0",
         "@rollup/plugin-terser": "0.4.4",
         "@semantic-release/changelog": "6.0.3",
         "@semantic-release/commit-analyzer": "13.0.0",
